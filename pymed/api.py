@@ -202,7 +202,7 @@ class PubMed(object):
         parameters["retmax"] = 50000
 
         # Calculate a cut off point based on the max_results parameter
-        if (max_results != -1) & (max_results < parameters["retmax"]):
+        if (max_results != -1) and (max_results < parameters["retmax"]):
             parameters["retmax"] = max_results
 
         # Make the first request to PubMed
@@ -212,7 +212,6 @@ class PubMed(object):
         article_ids += response.get("esearchresult", {}).get("idlist", [])
 
         # Get information from the response
-        #print(response.get("esearchresult", {}).get("count"))
         total_result_count = int(response.get("esearchresult", {}).get("count"))
         retrieved_count = int(response.get("esearchresult", {}).get("retmax"))
 
